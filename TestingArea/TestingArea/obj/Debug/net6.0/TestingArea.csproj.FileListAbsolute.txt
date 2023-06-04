@@ -1,0 +1,15 @@
+C:\Users\Salvi\source\repos\TestingArea\TestingArea\bin\Debug\net6.0\TestingArea.exe
+C:\Users\Salvi\source\repos\TestingArea\TestingArea\bin\Debug\net6.0\TestingArea.deps.json
+C:\Users\Salvi\source\repos\TestingArea\TestingArea\bin\Debug\net6.0\TestingArea.runtimeconfig.json
+C:\Users\Salvi\source\repos\TestingArea\TestingArea\bin\Debug\net6.0\TestingArea.dll
+C:\Users\Salvi\source\repos\TestingArea\TestingArea\bin\Debug\net6.0\TestingArea.pdb
+C:\Users\Salvi\source\repos\TestingArea\TestingArea\obj\Debug\net6.0\TestingArea.csproj.AssemblyReference.cache
+C:\Users\Salvi\source\repos\TestingArea\TestingArea\obj\Debug\net6.0\TestingArea.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Salvi\source\repos\TestingArea\TestingArea\obj\Debug\net6.0\TestingArea.AssemblyInfoInputs.cache
+C:\Users\Salvi\source\repos\TestingArea\TestingArea\obj\Debug\net6.0\TestingArea.AssemblyInfo.cs
+C:\Users\Salvi\source\repos\TestingArea\TestingArea\obj\Debug\net6.0\TestingArea.csproj.CoreCompileInputs.cache
+C:\Users\Salvi\source\repos\TestingArea\TestingArea\obj\Debug\net6.0\TestingArea.dll
+C:\Users\Salvi\source\repos\TestingArea\TestingArea\obj\Debug\net6.0\refint\TestingArea.dll
+C:\Users\Salvi\source\repos\TestingArea\TestingArea\obj\Debug\net6.0\TestingArea.pdb
+C:\Users\Salvi\source\repos\TestingArea\TestingArea\obj\Debug\net6.0\TestingArea.genruntimeconfig.cache
+C:\Users\Salvi\source\repos\TestingArea\TestingArea\obj\Debug\net6.0\ref\TestingArea.dll
