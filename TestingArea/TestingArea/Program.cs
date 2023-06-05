@@ -1,37 +1,26 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace TestingArea
 {
-    class Program
+    internal class Menu
     {
-        public static int ShowMenu(string arrow1, string arrow2, int options, string welcomemsg = "", string arrowstousemsg = "", string opt1 = "", string opt2 = "", string opt3 = "", string opt4 = "", string opt5 = "", string opt6 = "")
+        List<ConsoleKey> keys = new();
+        public static int ShowMenu(int numberOfOptions, List<ConsoleKey> keys, string welcomeMsg = "", string arrowstouseMsg = "", params string[] opts)
         {
             Console.OutputEncoding = Encoding.UTF8;
             Console.ForegroundColor = ConsoleColor.Cyan;
-            if (welcomemsg == "")
+            if (!string.IsNullOrEmpty(welcomeMsg))
             {
-
-            }
-            else
-            {
-                Console.WriteLine($"{welcomemsg}");
+                Console.WriteLine($"{welcomeMsg}");
             }
             Console.ResetColor();
-            if (arrowstousemsg == "")
+            if (!string.IsNullOrEmpty(welcomeMsg))
             {
-
-            }
-            else
-            {
-                Console.WriteLine($"{arrowstousemsg}");
+                Console.WriteLine($"{arrowstouseMsg}");
             }
             (int left, int top) = Console.GetCursorPosition();
-            var option = 1;
-            var decorator = $"✅ \u001b[32m";
+            var option = 0;
+            var decorator = $"[ \u001b[32m";
             ConsoleKeyInfo key;
             bool isSelected = false;
 
@@ -39,104 +28,42 @@ namespace TestingArea
             {
                 Console.SetCursorPosition(left, top);
 
-                if (arrow1 == "LeftArrow" && arrow2 == "RightArrow")
+                var firstKey = keys[0];
+
+                var secondKey = keys[1];
+
+                for (int i = 0; i < opts.Length; i++)
                 {
-                    if (!(opt1 == null) || !(opt1 == ""))
+                    if (!(opts[i] == null) || !(opts[i] == ""))
                     {
-                        Console.Write($"{(option == 1 ? decorator : "  ")}{opt1}\u001b[0m");
-                    }
-                    if (!(opt2 == null) || !(opt2 == ""))
-                    {
-                        Console.Write($"{(option == 2 ? decorator : "  ")}{opt2}\u001b[0m");
-                    }
-                    if (!(opt3 == null) || !(opt3 == ""))
-                    {
-                        Console.Write($"{(option == 3 ? decorator : "  ")}{opt3}\u001b[0m");
-                    }
-                    if (!(opt4 == null) || !(opt4 == ""))
-                    {
-                        Console.Write($"{(option == 4 ? decorator : "  ")}{opt4}\u001b[0m");
-                    }
-                    if (!(opt5 == null) || !(opt5 == ""))
-                    {
-                        Console.Write($"{(option == 5 ? decorator : "  ")}{opt5}\u001b[0m");
-                    }
-                    if (!(opt6 == null) || !(opt6 == ""))
-                    {
-                        Console.Write($"{(option == 6 ? decorator : "  ")}{opt6}\u001b[0m");
+                        if (firstKey == ConsoleKey.UpArrow && secondKey == ConsoleKey.DownArrow)
+                        {
+                            Console.WriteLine($"{(option == i ? decorator : "  ")}{opts[i]}\u001b[0m");
+                        }
+                        else
+                        {
+                            Console.Write($"{(option == i ? decorator : "  ")}{opts[i]}\u001b[0m");
+                        }
                     }
                 }
-                else if (arrow1 == "UpArrow" && arrow2 == "DownArrow")
-                {
-                    if (!(opt1 == null) || !(opt1 == ""))
-                    {
-                        Console.WriteLine($"{(option == 1 ? decorator : "  ")}{opt1}\u001b[0m");
-                    }
-                    if (!(opt2 == null) || !(opt2 == ""))
-                    {
-                        Console.WriteLine($"{(option == 2 ? decorator : "  ")}{opt2}\u001b[0m");
-                    }
-                    if (!(opt3 == null) || !(opt3 == ""))
-                    {
-                        Console.WriteLine($"{(option == 3 ? decorator : "  ")}{opt3}\u001b[0m");
-                    }
-                    if (!(opt4 == null) || !(opt4 == ""))
-                    {
-                        Console.WriteLine($"{(option == 4 ? decorator : "  ")}{opt4}\u001b[0m");
-                    }
-                    if (!(opt5 == null) || !(opt5 == ""))
-                    {
-                        Console.WriteLine($"{(option == 5 ? decorator : "  ")}{opt5}\u001b[0m");
-                    }
-                    if (!(opt6 == null) || !(opt6 == ""))
-                    {
-                        Console.WriteLine($"{(option == 6 ? decorator : "  ")}{opt6}\u001b[0m");
-                    }
-                }
+
                 key = Console.ReadKey(false);
 
                 switch (key.Key)
                 {
-                    case ConsoleKey.UpArrow:
-                        if (arrow1 == "UpArrow")
-                        {
-                            option = option == 1 ? options : option - 1;
-                        }
-                        else
-                        {
-                        }
+                    //Reason I added a when statement: If a user had to navigate through one of the menus with UpArrow and DownArrow, but pressed instead Left and RightArrow, those two would work and they shouldn't.
+                    case ConsoleKey.UpArrow when firstKey == ConsoleKey.UpArrow:
+                        option = option == 0 ? numberOfOptions - 1 : option - 1;
                         break;
-
-                    case ConsoleKey.DownArrow:
-                        if (arrow2 == "DownArrow")
-                        {
-                            option = option == options ? 1 : option + 1;
-                        }
-                        else
-                        {
-                        }
+                    case ConsoleKey.DownArrow when secondKey == ConsoleKey.DownArrow:
+                        option = option == numberOfOptions - 1 ? 0 : option + 1;
                         break;
-
-                    case ConsoleKey.LeftArrow:
-                        if (arrow1 == "LeftArrow")
-                        {
-                            option = option == 1 ? options : option - 1;
-                        }
-                        else
-                        {
-                        }
+                    case ConsoleKey.LeftArrow when firstKey == ConsoleKey.LeftArrow:
+                        option = option == 0 ? numberOfOptions - 1 : option - 1;
                         break;
-
-                    case ConsoleKey.RightArrow:
-                        if (arrow2 == "RightArrow")
-                        {
-                            option = option == options ? 1 : option + 1;
-                        }
-                        else
-                        {
-                        }
+                    case ConsoleKey.RightArrow when secondKey == ConsoleKey.RightArrow:
+                        option = option == numberOfOptions - 1 ? 0 : option + 1;
                         break;
-
                     case ConsoleKey.Enter:
                         isSelected = true;
                         break;
