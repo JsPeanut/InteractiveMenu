@@ -34,7 +34,7 @@ namespace TestingArea
 
                 for (int i = 0; i < opts.Length; i++)
                 {
-                    if (!(opts[i] == null) || !(opts[i] == ""))
+                    if (!String.IsNullOrEmpty(opts[i]))
                     {
                         if (firstKey == ConsoleKey.UpArrow && secondKey == ConsoleKey.DownArrow)
                         {
